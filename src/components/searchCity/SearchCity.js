@@ -20,21 +20,37 @@ const SearchCity = (props) => {
         setCity(city);
     }
 
-    const updateCity = () => {
-        getWeather().then(onCityLoaded)
+    const updateCity = (city) => {
+        console.log(city)
+        getWeather(city).then(onCityLoaded)
     }
 
     return (
         <div>
-            <form className="form">
-                <label htmlFor="name">Ведите название города</label>
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                />
-            </form>
-            <button onClick={() => updateCity()}>enter</button>
+            <Formik
+                initialValues={{
+                    city: ''
+                }}
+                validationSchema={Yup.object({
+                    city: Yup.string().required('This field is required')
+                })}
+                onSubmit={({ city }) => {
+                    updateCity(city);
+                    console.log(city);
+                }}>
+                <Form className="form">
+                    <label htmlFor="city">Ведите название города</label>
+                    <Field
+                        id="city"
+                        name="city"
+                        type="text"
+                        placeholder="Enter city name"
+                    />
+                    <button
+                        type='submit'
+                    >enter</button>
+                </Form>
+            </Formik>
 
             <div>город:{city}</div>
         </div>

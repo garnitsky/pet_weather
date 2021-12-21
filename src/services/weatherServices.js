@@ -2,7 +2,7 @@ const useWeatherServices = () => {
 
     const _apiBase = 'http://api.openweathermap.org/data/2.5/weather?q=';
     const _apiKey = '&appid=d1fca4765e13eb8b49b9950a969ed7ec';
-    const cityName = 'Kyiv';
+    const city = 'Kyiv';
 
     const getResource = async (url) => {
         let res = await fetch(url);
@@ -12,8 +12,8 @@ const useWeatherServices = () => {
         return await res.json();
     }
 
-    const getWeather = async () => {
-        const res = await getResource(`${_apiBase}${cityName}${_apiKey}`);
+    const getWeather = async (city = 'Kyiv') => {
+        const res = await getResource(`${_apiBase}${city}${_apiKey}`);
         console.log(res.name);
         return res.name;
     }
