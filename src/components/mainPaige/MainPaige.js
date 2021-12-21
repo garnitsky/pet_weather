@@ -1,12 +1,21 @@
-import './mainPaige.css'
+import './mainPaige.css';
+import WeatherDay from '../weatherDay/WeatherDay';
+import WeatherWeek from '../weatherWeek/WeatherWeek';
+import SearchCity from '../searchCity/SearchCity';
+import City from '../city/city';
 
 const MainPaige = () => {
-    <div className="main_paige">
-        <SearchCity />
-        <div>
-            <WeatherDay />
-            <WeatherWeek />
+    return (
+        <div className="main_paige">
+            <h2>Выберите город</h2>
+            <SearchCity />
+            <div>
+                <WeatherDay />
+                <WeatherWeek />
+                {/*<City />*/}
+            </div>
         </div>
-
-    </div>
+    )
 }
+
+export default MainPaige;

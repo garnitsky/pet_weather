@@ -1,10 +1,13 @@
 import './App.css';
 import Header from './components/header/header';
+import MainPaige from './components/mainPaige/MainPaige';
 
 const App = () => {
-
     return (
-        <Header />
+        <div>
+            <Header />
+            <MainPaige />
+        </div>
     )
 }
 
